@@ -1,4 +1,7 @@
 <?php
+
+use models\Game;
+
 require_once 'models/Game.php';
 
 $favoriteGames = Game::getFilteredGames(['favorite' => true, 'sort' => 'title-asc']);
