@@ -1,4 +1,8 @@
 <?php
+
+use models\Game;
+use models\Review;
+
 require_once 'models/Review.php';
 require_once 'models/Game.php';
 
