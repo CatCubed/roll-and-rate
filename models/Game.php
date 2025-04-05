@@ -1,6 +1,9 @@
 <?php
 
 namespace models;
+use PDO;
+
+require_once 'includes/db.php';
 
 class Game {
     public static function getAllGames() {
