@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/styles-AB.css">
+    <link rel="stylesheet" href="styles/styles-mobile.css">
+    <link rel="icon" type="image/x-icon" href="resources/icon.ico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href='https://fonts.googleapis.com/css?family=Jaini' rel='stylesheet'>
+    <title>Roll & Rate | Procházet</title>
+</head>
+
+<body>
+
+<!--NAVBAR - Desktop-->
+<nav class="display-large bg-dark text-white navbar">
+    <img width="191" height="40" class="navbar__logo" src="resources/logo.png" alt="logo">
+    <a class="navbar__item bg-primary" href="index.html">
+        <i class="navbar__item__icon material-icons">home</i>Domů
+    </a>
+    <a class="navbar__item bg-primary" href="reviews.html">
+        <i class="navbar__item__icon material-icons">star</i>Recenze
+    </a>
+    <a class="navbar__item bg-primary" href="browse.html">
+        <i class="navbar__item__icon material-icons">web</i>Procházet
+    </a>
+    <a class="navbar__item bg-primary" href="wishlist.html">
+        <i class="navbar__item__icon material-icons">favorite</i>Oblíbené
+    </a>
+</nav>
+<!--NAVBAR - Desktop-->
+
+<!--NAVBAR - Mobile-->
+<nav class="display-small bg-dark navbar">
+    <a class="navbar__item bg-primary" href="index.html">
+        <i class="navbar__item__icon material-icons">home</i>
+    </a>
+    <a class="navbar__item bg-primary" href="reviews.html">
+        <i class="navbar__item__icon material-icons">star</i>
+    </a>
+    <a class="navbar__item bg-primary" href="browse.html">
+        <i class="navbar__item__icon material-icons">web</i>
+    </a>
+    <a class="navbar__item bg-primary" href="wishlist.html">
+        <i class="navbar__item__icon material-icons">favorite</i>
+    </a>
+</nav>
+<!--NAVBAR - Mobile-->
+
+<main>
+    <div class="browse__filter_container" id="controls">
+    <button class="toggle-menu-button" id="toggleMenuButton">Filtrování</button>
+        <label for="filterYear">Rok vydání</label>
+        <select id="filterYear">
+            <option value="">Rok vydání</option>
+        </select>
+        <label for="filterDifficulty">Obtížnost</label>
+        <select id="filterDifficulty">
+            <option value="">Obtížnost</option>
+        </select>
+        <label for="filterGenre">Žánr</label>
+        <select id="filterGenre">
+            <option value="">Žánr</option>
+        </select>
+        <label for="filterPlayerCount">Max. počet hráčů</label>
+        <select id="filterPlayerCount">
+            <option value="">Max. počet hráčů</option>
+        </select>
+
+        <label for="sortCriteria">Řazení</label>
+        <select id="sortCriteria">
+            <option value="none">Řazení</option>
+            <option value="title-asc">Podle názvu (A-Z)</option>
+            <option value="title-desc">Podle názvu (Z-A)</option>
+            <option value="releaseYear-asc">Rok vydání (Vzestupně)</option>
+            <option value="releaseYear-desc">Rok vydání (Sestupně)</option>
+            <option value="difficulty-asc">Obtížnost (Vzestupně)</option>
+            <option value="difficulty-desc">Obtížnost (Sestupně)</option>
+            <option value="playerCount-asc">Maximální počet hráčů (Vzestupně)</option>
+            <option value="playerCount-desc">Maximální počet hráčů (Sestupně)</option>
+            <option value="reviewScore-asc">Hodnocení (Vzestupně)</option>
+            <option value="reviewScore-desc">Hodnocení (Sestupně)</option>
+            <option value="favorite-desc">Oblíbené hry první</option>
+        </select>
+    </div>
+    <div class="browse__game_container" id="gameContainer"></div>
+</main>
+
+<footer class="bg-dark footer">
+    <p class="footer__item">&copy;2024 Studentský projekt studentů <a class="footer__item__link"
+                                                                      href="https://www.pef.czu.cz/cs">ČZU - PEF</a>
+    </p>
+</footer>
+
+<script src="scripts/dynamicStyling.js"></script>
+<script src="scripts/games.js"></script>
+<script src="scripts/filterAndSort-AB.js"></script>
+</body>
+</html>

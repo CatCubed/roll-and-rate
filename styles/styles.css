@@ -1,0 +1,426 @@
+/* COLORS */
+.bg-dark {
+    background-color: #1E0638;
+}
+
+.bg-light {
+    background-color: #C188FF;
+}
+
+.bg-primary {
+    background-color: #7716DF;
+}
+
+.bg-gray {
+    background-color: #272727;
+}
+
+.text-white {
+    color: #fff;
+}
+
+/* COLORS */
+
+/* BODY */
+body {
+    margin: 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    color: #fff;
+    background-color: #272727;
+}
+
+/* BODY */
+
+/* LABEL */
+label {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+    clip: rect(1px, 1px, 1px, 1px); /*maybe deprecated but we need to support legacy browsers */
+    clip-path: inset(50%); /*modern browsers, clip-path works inwards from each corner*/
+    white-space: nowrap; /* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
+}
+
+/* BODY */
+
+/* HEADERS */
+h1 {
+    font-size: 35px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 25px;
+}
+
+h1, h2, h3 {
+    font-family: 'Jaini', serif;
+    font-weight: normal;
+}
+
+/* HEADERS */
+
+/* MAIN */
+main {
+    margin-top: 60px;
+    margin-bottom: 50px;
+}
+
+/* MAIN */
+
+/* NAV */
+.navbar {
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    text-align: right;
+    z-index: 100;
+}
+
+.navbar__logo {
+    float: left;
+    padding: 3px 10px;
+    margin: 5px;
+    height: 40px;
+}
+
+.navbar__item {
+    border-radius: 30px;
+    font-family: 'Jaini', serif;
+    font-size: 25px;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    padding: 3px 20px;
+    margin: 10px;
+    text-decoration: none;
+}
+
+.navbar__item__icon {
+    vertical-align: bottom;
+    margin-right: 5px;
+    margin-bottom: 3px;
+}
+
+.navbar__item--selected {
+    background-color: #C188FF;
+}
+
+.display-small {
+    display: none;
+}
+
+/* NAV */
+
+/* SLIDER */
+.slider__parent {
+    position: relative;
+    max-width: 100%;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.slider__title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 10px;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.40);
+    backdrop-filter: blur(15px);
+    z-index: 10;
+}
+
+/* SLIDER */
+
+/* GAME SECTION */
+.game_section__item {
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    height: 200px;
+    border-radius: 12px;
+}
+
+.game_section__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.game_section__item__text {
+    font-family: 'Jaini', serif;
+    font-weight: normal;
+    font-size: 20px;
+    position: absolute;
+    bottom: 0;
+    background: #7716DF;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 12px;
+}
+
+/* GAME SECTION */
+
+/* GAME DETAILS */
+.game_details {
+    padding: 30px;
+}
+
+.game_details__main {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.game_details__main img {
+    flex-shrink: 0;
+    max-width: 500px;
+    height: auto;
+    border-radius: 12px;
+}
+
+.game_details__info {
+    flex: 1;
+}
+
+.game_details__rating {
+    text-align: center;
+    font-size: 24px;
+    color: gold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game_details__rating__star {
+    font-size: 40px;
+}
+
+.game_details__description {
+    margin-top: 20px;
+}
+
+.game_details__images {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.game_details__images img {
+    max-width: 400px;
+    height: auto;
+    border-radius: 12px;
+}
+
+.game_details__rules {
+    margin-top: 20px;
+}
+
+.game_details__rules p {
+    margin: 0;
+}
+
+/* GAME DETAILS */
+
+/* REVIEW DETAILS */
+.review_details {
+    padding: 30px;
+}
+
+.review_details h1 {
+    margin: 0;
+}
+
+.review_details img {
+    margin: 20px 0 20px 0;
+    max-width: 450px;
+    height: auto;
+    border-radius: 12px;
+}
+
+/* REVIEW DETAILS */
+
+/* REVIEW SECTION */
+.review {
+    text-decoration: none;
+    color: white;
+    display: flex;
+}
+
+.review img {
+    align-self: center;
+    width: 150px;
+    height: 200px;
+    border-radius: 12px;
+    margin-right: 20px;
+    object-fit: cover;
+}
+
+/* REVIEW SECTION */
+
+/* BROWSE SECTION */
+.browse__filter_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px;
+    background-color: #1E0638;
+    border-radius: 12px;
+    margin-top: 70px;
+}
+
+.browse__filter_container select {
+    appearance: none;
+    width: 19%;
+    font-family: 'Jaini', serif;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+}
+
+.browse__game_container {
+    margin: 20px auto;
+}
+
+.browse__game_container a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    background-color: #1E0638;
+}
+
+.browse__game_container img {
+    max-height: 120px;
+    width: auto;
+    margin-right: 10px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.browse__game_container h2 {
+    width: 10%;
+    margin: 0 30px;
+}
+
+.browse__game_container h3 {
+    margin: 0 20px;
+}
+
+/* BROWSE SECTION */
+
+/* CARDS */
+.card {
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+/* CARDS */
+
+/* FLEXBOX CONTAINER */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: start;
+}
+
+.container__section--sticky {
+    position: sticky;
+    top: 0;
+    z-index: 0;
+}
+
+.container__section--column--big {
+    width: 48%;
+    margin-right: 100px;
+}
+
+.container__section--column--small {
+    width: 25%;
+    padding: 0;
+    margin: 0;
+}
+
+/* FLEXBOX CONTAINER */
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    text-align: center;
+    gap: 30px;
+    padding: 10px;
+}
+
+.grid__item--medium {
+    grid-column: 1 / span 2;
+}
+
+.grid__item--big {
+    grid-column: 1 / span 3;
+}
+
+.grid__item--big img {
+    width: 40rem;
+    max-width: 40vw;
+}
+
+/* GRID */
+
+/* FOOTER */
+.footer {
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+.footer__item {
+    margin: 0;
+    padding: 14px;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.footer__item__link {
+    font-weight: bold;
+    text-decoration: none;
+    color: #C188FF;
+}

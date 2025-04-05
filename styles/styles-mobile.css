@@ -1,0 +1,156 @@
+@media only screen and (max-width: 885px) {
+    body {
+        margin-bottom: 60px;
+        margin-top: 70px;
+    }
+
+    main {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    .browse__filter_container {
+        margin: 0;
+    }
+
+    .browse__filter_container select {
+        width: 45%;
+    }
+
+    .browse__game_container {
+        width: 100%;
+        text-align: center;
+    }
+
+    .browse__game_container a {
+        width: 80%;
+        text-align: center;
+        display: inline-block;
+    }
+
+    .browse__game_container img {
+        margin: 30px;
+        max-height: 100%;
+    }
+
+    .browse__game_container h2, h3 {
+        width: auto;
+        margin: 0;
+    }
+
+    .game_details {
+        padding: 10px;
+    }
+
+    .game_details__main {
+        display: inline-block;
+    }
+
+    .game_details__main img {
+        max-width: 100%;
+    }
+
+    .game_details__images {
+        display: inline-block;
+        text-align: center;
+        margin: 0;
+    }
+
+    .game_details__images img {
+        max-width: 90%;
+        margin: 10px;
+    }
+
+    .review_details img {
+        max-width: 100%;
+    }
+
+    .review img {
+        max-width: 100%;
+    }
+
+    .review {
+        text-align: center;
+        display: inline-block;
+    }
+
+    .navbar {
+        text-align: center;
+        top: auto;
+        bottom: 0;
+        z-index: 100;
+    }
+
+    .navbar__item {
+        padding: 5px;
+    }
+
+    .navbar__item__icon {
+        margin: 5px;
+    }
+
+    .display-large {
+        display: none;
+    }
+
+    .display-small {
+        display: initial;
+    }
+
+    .card {
+        width: auto;
+    }
+
+    .image-news {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .image-map {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .image-person {
+        max-width: 100%;
+    }
+
+    .section-image {
+        margin: 1rem;
+        padding: 0;
+    }
+
+    .section-image img {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .container__section--sticky {
+        position: initial;
+        top: auto;
+    }
+
+    .container__section--column--big {
+        width: auto;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .container__section--column--small {
+        max-width: 100%;
+    }
+
+    .grid__item--medium {
+        grid-column: 1;
+    }
+
+    table, th, td {
+        padding: 5px;
+    }
+
+    footer {
+        bottom: auto !important;
+        top: 0;
+        z-index: 100;
+    }
+}
