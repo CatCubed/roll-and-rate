@@ -133,7 +133,7 @@ class Game
                                    WHERE id = ?");
 
         $stmt->bind_param(
-            'ssssiisidii',
+            'ssssiisspii',
             $data['title'],
             $data['description'],
             $data['rules'],
