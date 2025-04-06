@@ -1,7 +1,4 @@
 <?php
-
-use models\Game;
-
 require_once 'models/Game.php';
 
 $title = isset($_GET['title']) ? $_GET['title'] : null;
