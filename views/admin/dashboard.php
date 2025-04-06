@@ -17,7 +17,7 @@ $reviewCount = count(Review::getAllReviews());
 ?>
 
     <main>
-        <div class="container" style="padding: 20px; max-width: 1000px; margin: 0 auto;">
+        <div class="container" style="display: block !important; padding: 20px; max-width: 1000px; margin: 0 auto;">
             <div class="card bg-dark" style="padding: 20px; margin-bottom: 40px;">
                 <div style="display: block; justify-content: space-between; align-items: center;">
                     <h1>Administrace</h1>
