@@ -1,8 +1,8 @@
 <?php
 define('DB_HOST', 'localhost');
-define('DB_USER', 'root');  // TODO change
-define('DB_PASS', '');      // TODO change
-define('DB_NAME', 'rollandrate');
+define('DB_USER', 'ete32e_2425zs_13');
+define('DB_PASS', '14FsF6T095!32');
+define('DB_NAME', 'ete32e_2425zs_13');
 
 define('BASE_URL', 'http://localhost/roll-and-rate');
 
