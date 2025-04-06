@@ -1,4 +1,5 @@
 <?php
+// Kontrola přihlášení administrátora
 session_start();
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
     header('Location: index.php?page=admin_login');
@@ -18,7 +19,7 @@ $reviewCount = count(Review::getAllReviews());
     <main>
         <div class="container" style="padding: 20px; max-width: 1000px; margin: 0 auto;">
             <div class="card bg-dark" style="padding: 20px; margin-bottom: 40px;">
-                <div style="justify-content: space-between; align-items: center;">
+                <div style="display: block; justify-content: space-between; align-items: center;">
                     <h1>Administrace</h1>
                     <div>
                         <a href="index.php?page=admin_logout" class="navbar__item bg-primary" style="display: inline-block;">
