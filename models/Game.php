@@ -97,6 +97,69 @@ class Game
         $stmt->bind_param('i', $id);
         return $stmt->execute();
     }
-}
 
-?>
+    public static function createGame($data)
+    {
+        $mysqli = getDbConnection();
+
+        $stmt = $mysqli->prepare("INSERT INTO games (title, description, rules, image, favorite, releaseYear, difficulty, genre, playerCount, reviewScore) 
+                                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+        $stmt->bind_param(
+            'ssssiisidi',
+            $data['title'],
+            $data['description'],
+            $data['rules'],
+            $data['image'],
+            $data['favorite'],
+            $data['releaseYear'],
+            $data['difficulty'],
+            $data['genre'],
+            $data['playerCount'],
+            $data['reviewScore']
+        );
+
+        return $stmt->execute();
+    }
+
+    public static function updateGame($id, $data)
+    {
+        $mysqli = getDbConnection();
+
+        $stmt = $mysqli->prepare("UPDATE games 
+                                   SET title = ?, description = ?, rules = ?, image = ?, 
+                                       favorite = ?, releaseYear = ?, difficulty = ?, 
+                                       genre = ?, playerCount = ?, reviewScore = ? 
+                                   WHERE id = ?");
+
+        $stmt->bind_param(
+            'ssssiisidii',
+            $data['title'],
+            $data['description'],
+            $data['rules'],
+            $data['image'],
+            $data['favorite'],
+            $data['releaseYear'],
+            $data['difficulty'],
+            $data['genre'],
+            $data['playerCount'],
+            $data['reviewScore'],
+            $id
+        );
+
+        return $stmt->execute();
+    }
+
+    public static function deleteGame($id)
+    {
+        $mysqli = getDbConnection();
+
+        $stmt = $mysqli->prepare("DELETE FROM game_images WHERE game_id = ?");
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+
+        $stmt = $mysqli->prepare("DELETE FROM games WHERE id = ?");
+        $stmt->bind_param('i', $id);
+        return $stmt->execute();
+    }
+}

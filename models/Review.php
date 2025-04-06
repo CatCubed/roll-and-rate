@@ -25,4 +25,31 @@ class Review {
         $result = $stmt->get_result();
         return $result->fetch_assoc();
     }
+
+    public static function createReview($data) {
+        $mysqli = getDbConnection();
+
+        $stmt = $mysqli->prepare("INSERT INTO reviews (title, text, image) VALUES (?, ?, ?)");
+        $stmt->bind_param('sss', $data['title'], $data['text'], $data['image']);
+
+        return $stmt->execute();
+    }
+
+    public static function updateReview($id, $data) {
+        $mysqli = getDbConnection();
+
+        $stmt = $mysqli->prepare("UPDATE reviews SET title = ?, text = ?, image = ? WHERE id = ?");
+        $stmt->bind_param('sssi', $data['title'], $data['text'], $data['image'], $id);
+
+        return $stmt->execute();
+    }
+
+    public static function deleteReview($id) {
+        $mysqli = getDbConnection();
+
+        $stmt = $mysqli->prepare("DELETE FROM reviews WHERE id = ?");
+        $stmt->bind_param('i', $id);
+
+        return $stmt->execute();
+    }
 }
