@@ -1,14 +1,17 @@
 <?php
 require_once 'includes/db.php';
 
-class Game {
-    public static function getAllGames() {
+class Game
+{
+    public static function getAllGames()
+    {
         $mysqli = getDbConnection();
         $result = $mysqli->query("SELECT * FROM games ORDER BY releaseYear DESC");
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public static function getGameById($id) {
+    public static function getGameById($id)
+    {
         $mysqli = getDbConnection();
         $stmt = $mysqli->prepare("SELECT * FROM games WHERE id = ?");
         $stmt->bind_param('i', $id);
@@ -17,7 +20,8 @@ class Game {
         return $result->fetch_assoc();
     }
 
-    public static function getGameByTitle($title) {
+    public static function getGameByTitle($title)
+    {
         $mysqli = getDbConnection();
         $stmt = $mysqli->prepare("SELECT * FROM games WHERE title = ?");
         $stmt->bind_param('s', $title);
@@ -26,7 +30,8 @@ class Game {
         return $result->fetch_assoc();
     }
 
-    public static function getFilteredGames($filters = []) {
+    public static function getFilteredGames($filters = [])
+    {
         $mysqli = getDbConnection();
 
         $sql = "SELECT * FROM games WHERE 1=1";
@@ -61,7 +66,6 @@ class Game {
             $sql .= " AND favorite = 1";
         }
 
-        // Řazení
         if (!empty($filters['sort'])) {
             list($column, $direction) = explode('-', $filters['sort']);
             $sql .= " ORDER BY " . $column . " " . ($direction == 'desc' ? 'DESC' : 'ASC');
@@ -70,6 +74,12 @@ class Game {
         }
 
         $stmt = $mysqli->prepare($sql);
+
+        if ($stmt === false) {
+            error_log("Chyba přípravy SQL dotazu: " . $mysqli->error);
+            error_log("SQL dotaz: " . $sql);
+            return [];
+        }
 
         if (!empty($bindParams)) {
             $bindParamsReferences = [];
@@ -85,11 +95,13 @@ class Game {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public static function toggleFavorite($id) {
+    public static function toggleFavorite($id)
+    {
         $mysqli = getDbConnection();
         $stmt = $mysqli->prepare("UPDATE games SET favorite = NOT favorite WHERE id = ?");
         $stmt->bind_param('i', $id);
         return $stmt->execute();
     }
 }
+
 ?>
