@@ -17,7 +17,7 @@ $reviewCount = count(Review::getAllReviews());
 
     <main>
         <div class="container">
-            <div class="card bg-dark" style="margin-bottom: 20px;">
+            <div class="card bg-dark" style="margin-bottom: 30px; padding: 20px;">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <h1>Administrace</h1>
                     <div>
@@ -29,24 +29,24 @@ $reviewCount = count(Review::getAllReviews());
                 <p>Vítejte v administrační sekci, <?= htmlspecialchars($_SESSION['admin_username']) ?>.</p>
             </div>
 
-            <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 30px;">
-                <div class="card bg-dark" style="flex: 1; min-width: 250px; text-align: center;">
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 40px;">
+                <div class="card bg-dark" style="flex: 1; min-width: 250px; text-align: center; padding: 25px;">
                     <i class="material-icons" style="font-size: 48px; color: #C188FF;">games</i>
                     <h2><?= $gameCount ?></h2>
                     <p>Deskovky</p>
                 </div>
 
-                <div class="card bg-dark" style="flex: 1; min-width: 250px; text-align: center;">
+                <div class="card bg-dark" style="flex: 1; min-width: 250px; text-align: center; padding: 25px;">
                     <i class="material-icons" style="font-size: 48px; color: #C188FF;">rate_review</i>
                     <h2><?= $reviewCount ?></h2>
                     <p>Recenze</p>
                 </div>
             </div>
 
-            <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-                <a href="index.php?page=admin_games" class="card bg-dark" style="flex: 1; min-width: 300px; text-decoration: none; color: white;">
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 40px;">
+                <a href="index.php?page=admin_games" class="card bg-dark" style="flex: 1; min-width: 300px; text-decoration: none; color: white; padding: 25px;">
                     <div style="display: flex; align-items: center;">
-                        <i class="material-icons" style="font-size: 36px; margin-right: 15px; color: #C188FF;">games</i>
+                        <i class="material-icons" style="font-size: 36px; margin-right: 20px; color: #C188FF;">games</i>
                         <div>
                             <h2>Spravovat deskovky</h2>
                             <p>Přidat, upravit nebo odebrat deskovky</p>
@@ -54,9 +54,9 @@ $reviewCount = count(Review::getAllReviews());
                     </div>
                 </a>
 
-                <a href="index.php?page=admin_reviews" class="card bg-dark" style="flex: 1; min-width: 300px; text-decoration: none; color: white;">
+                <a href="index.php?page=admin_reviews" class="card bg-dark" style="flex: 1; min-width: 300px; text-decoration: none; color: white; padding: 25px;">
                     <div style="display: flex; align-items: center;">
-                        <i class="material-icons" style="font-size: 36px; margin-right: 15px; color: #C188FF;">rate_review</i>
+                        <i class="material-icons" style="font-size: 36px; margin-right: 20px; color: #C188FF;">rate_review</i>
                         <div>
                             <h2>Spravovat recenze</h2>
                             <p>Přidat, upravit nebo odebrat recenze</p>
