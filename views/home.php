@@ -1,7 +1,4 @@
 <?php
-
-use models\Game;
-
 require_once 'models/Game.php';
 
 $newReleases = Game::getFilteredGames(['sort' => 'releaseYear-desc']);
