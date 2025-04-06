@@ -106,7 +106,7 @@ class Game
                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
         $stmt->bind_param(
-            'ssssiisidi',
+            'ssssiissdi',
             $data['title'],
             $data['description'],
             $data['rules'],
@@ -133,7 +133,7 @@ class Game
                                    WHERE id = ?");
 
         $stmt->bind_param(
-            'ssssiisspii',
+            'ssssiissdii',
             $data['title'],
             $data['description'],
             $data['rules'],
