@@ -1,7 +1,4 @@
 <?php
-
-use models\Game;
-
 require_once 'models/Game.php';
 
 $year = isset($_GET['year']) ? $_GET['year'] : '';
