@@ -1,64 +1,67 @@
 <?php
-
-namespace models;
-use PDO;
-
 require_once 'includes/db.php';
 
 class Game {
     public static function getAllGames() {
-        $conn = getDbConnection();
-        $stmt = $conn->prepare("SELECT * FROM games ORDER BY releaseYear DESC");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $mysqli = getDbConnection();
+        $result = $mysqli->query("SELECT * FROM games ORDER BY releaseYear DESC");
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public static function getGameById($id) {
-        $conn = getDbConnection();
-        $stmt = $conn->prepare("SELECT * FROM games WHERE id = :id");
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $mysqli = getDbConnection();
+        $stmt = $mysqli->prepare("SELECT * FROM games WHERE id = ?");
+        $stmt->bind_param('i', $id);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
     }
 
     public static function getGameByTitle($title) {
-        $conn = getDbConnection();
-        $stmt = $conn->prepare("SELECT * FROM games WHERE title = :title");
-        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $mysqli = getDbConnection();
+        $stmt = $mysqli->prepare("SELECT * FROM games WHERE title = ?");
+        $stmt->bind_param('s', $title);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
     }
 
     public static function getFilteredGames($filters = []) {
-        $conn = getDbConnection();
+        $mysqli = getDbConnection();
 
         $sql = "SELECT * FROM games WHERE 1=1";
-        $params = [];
+        $types = "";
+        $bindParams = [];
 
         if (!empty($filters['year'])) {
-            $sql .= " AND releaseYear = :year";
-            $params[':year'] = $filters['year'];
+            $sql .= " AND releaseYear = ?";
+            $types .= "i";
+            $bindParams[] = $filters['year'];
         }
 
         if (!empty($filters['difficulty'])) {
-            $sql .= " AND difficulty = :difficulty";
-            $params[':difficulty'] = $filters['difficulty'];
+            $sql .= " AND difficulty = ?";
+            $types .= "i";
+            $bindParams[] = $filters['difficulty'];
         }
 
         if (!empty($filters['genre'])) {
-            $sql .= " AND genre = :genre";
-            $params[':genre'] = $filters['genre'];
+            $sql .= " AND genre = ?";
+            $types .= "s";
+            $bindParams[] = $filters['genre'];
         }
 
         if (!empty($filters['playerCount'])) {
-            $sql .= " AND playerCount = :playerCount";
-            $params[':playerCount'] = $filters['playerCount'];
+            $sql .= " AND playerCount = ?";
+            $types .= "i";
+            $bindParams[] = $filters['playerCount'];
         }
 
         if (isset($filters['favorite']) && $filters['favorite'] === true) {
             $sql .= " AND favorite = 1";
         }
 
+        // Řazení
         if (!empty($filters['sort'])) {
             list($column, $direction) = explode('-', $filters['sort']);
             $sql .= " ORDER BY " . $column . " " . ($direction == 'desc' ? 'DESC' : 'ASC');
@@ -66,19 +69,27 @@ class Game {
             $sql .= " ORDER BY releaseYear DESC";
         }
 
-        $stmt = $conn->prepare($sql);
-        foreach ($params as $key => $value) {
-            $stmt->bindValue($key, $value);
+        $stmt = $mysqli->prepare($sql);
+
+        if (!empty($bindParams)) {
+            $bindParamsReferences = [];
+            foreach ($bindParams as $key => $value) {
+                $bindParamsReferences[$key] = &$bindParams[$key];
+            }
+            array_unshift($bindParamsReferences, $types);
+            call_user_func_array([$stmt, 'bind_param'], $bindParamsReferences);
         }
 
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public static function toggleFavorite($id) {
-        $conn = getDbConnection();
-        $stmt = $conn->prepare("UPDATE games SET favorite = NOT favorite WHERE id = :id");
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $mysqli = getDbConnection();
+        $stmt = $mysqli->prepare("UPDATE games SET favorite = NOT favorite WHERE id = ?");
+        $stmt->bind_param('i', $id);
         return $stmt->execute();
     }
 }
+?>
