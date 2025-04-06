@@ -1,31 +1,28 @@
 <?php
-
-namespace models;
-use PDO;
-
 require_once 'includes/db.php';
 
 class Review {
     public static function getAllReviews() {
-        $conn = getDbConnection();
-        $stmt = $conn->prepare("SELECT * FROM reviews ORDER BY id DESC");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $mysqli = getDbConnection();
+        $result = $mysqli->query("SELECT * FROM reviews ORDER BY id DESC");
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public static function getReviewById($id) {
-        $conn = getDbConnection();
-        $stmt = $conn->prepare("SELECT * FROM reviews WHERE id = :id");
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $mysqli = getDbConnection();
+        $stmt = $mysqli->prepare("SELECT * FROM reviews WHERE id = ?");
+        $stmt->bind_param('i', $id);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
     }
 
     public static function getReviewByTitle($title) {
-        $conn = getDbConnection();
-        $stmt = $conn->prepare("SELECT * FROM reviews WHERE title = :title");
-        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $mysqli = getDbConnection();
+        $stmt = $mysqli->prepare("SELECT * FROM reviews WHERE title = ?");
+        $stmt->bind_param('s', $title);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
     }
 }
