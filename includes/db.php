@@ -1,20 +1,21 @@
 <?php
 function getDbConnection() {
-    static $conn;
+    static $mysqli;
 
-    if ($conn === null) {
-        try {
-            $conn = new PDO(
-                "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4",
-                DB_USER,
-                DB_PASS
-            );
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            die("Chyba připojení k databázi: " . $e->getMessage());
+    if ($mysqli === null) {
+        $database = 'ete32e_2425zs_13';
+        $username = 'ete32e_2425zs_13';
+        $password = '14FsF6T095!32';
+
+        $mysqli = new mysqli('localhost', $username, $password, $database);
+
+        if ($mysqli->connect_errno) {
+            die('Failed to connect to MySQL: ' . $mysqli->connect_error);
         }
+
+        $mysqli->set_charset('utf8mb4');
     }
 
-    return $conn;
+    return $mysqli;
 }
 ?>
