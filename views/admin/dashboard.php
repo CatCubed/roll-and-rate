@@ -18,7 +18,7 @@ $reviewCount = count(Review::getAllReviews());
     <main>
         <div class="container" style="padding: 20px; max-width: 1000px; margin: 0 auto;">
             <div class="card bg-dark" style="padding: 20px; margin-bottom: 40px;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="justify-content: space-between; align-items: center;">
                     <h1>Administrace</h1>
                     <div>
                         <a href="index.php?page=admin_logout" class="navbar__item bg-primary" style="display: inline-block;">
@@ -29,7 +29,7 @@ $reviewCount = count(Review::getAllReviews());
                 <p>Vítejte v administrační sekci, <?= htmlspecialchars($_SESSION['admin_username']) ?>.</p>
             </div>
 
-            <div style="margin-bottom: 40px; overflow: hidden;">
+            <div style="margin-bottom: 40px;">
                 <div style="float: left; width: 48%; margin-right: 4%;">
                     <div class="card bg-dark" style="text-align: center; padding: 30px;">
                         <i class="material-icons" style="font-size: 52px; color: #C188FF; margin-bottom: 15px;">games</i>
@@ -47,7 +47,7 @@ $reviewCount = count(Review::getAllReviews());
                 </div>
             </div>
 
-            <div style="margin-bottom: 40px; overflow: hidden; clear: both;">
+            <div style="margin-bottom: 40px; clear: both;">
                 <div style="float: left; width: 48%; margin-right: 4%;">
                     <a href="index.php?page=admin_games" style="text-decoration: none; color: white; display: block;">
                         <div class="card bg-dark" style="padding: 30px;">
