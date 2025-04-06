@@ -66,7 +66,7 @@ class Game
             $sql .= " AND favorite = 1";
         }
 
-        if (!empty($filters['sort'])) {
+        if (!empty($filters['sort']) && strpos($filters['sort'], '-') !== false) {
             list($column, $direction) = explode('-', $filters['sort']);
             $sql .= " ORDER BY " . $column . " " . ($direction == 'desc' ? 'DESC' : 'ASC');
         } else {
@@ -82,12 +82,7 @@ class Game
         }
 
         if (!empty($bindParams)) {
-            $bindParamsReferences = [];
-            foreach ($bindParams as $key => $value) {
-                $bindParamsReferences[$key] = &$bindParams[$key];
-            }
-            array_unshift($bindParamsReferences, $types);
-            call_user_func_array([$stmt, 'bind_param'], $bindParamsReferences);
+            $stmt->bind_param($types, ...$bindParams);
         }
 
         $stmt->execute();
